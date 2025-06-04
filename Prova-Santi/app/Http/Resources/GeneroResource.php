@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
-
+use App\Http\Resources\LivroResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class GeneroResource extends JsonResource

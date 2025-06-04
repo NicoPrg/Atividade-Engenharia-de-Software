@@ -21,13 +21,17 @@ class UsuarioController extends Controller
 
     public function criar(Request $request)
     {
-        $usuario = $request->validate([
+        $dados = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
             'senha' => 'required|string|min:6',
         ]);
 
-        return new UsuarioResource($usuario);
+        $dados['senha'] = bcrypt($dados['senha']);
+
+        $usuario = \App\Models\Usuario::create($dados);
+
+        return new \App\Http\Resources\UsuarioResource($usuario);
     }
 
     public function atualizar(Request $request, $id)

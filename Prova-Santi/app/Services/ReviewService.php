@@ -13,6 +13,11 @@ class ReviewService
         return $this->repository->listar();
     }
 
+    public function criar(array $dados)
+    {
+        return $this->repository->create($dados);
+    }
+
     public function buscar($id)
     {
         return $this->repository->buscar($id);

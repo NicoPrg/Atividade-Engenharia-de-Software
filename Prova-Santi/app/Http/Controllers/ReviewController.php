@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\ReviewResource;
+use App\Services\ReviewService;
 use App\Models\Review;
+
 
 class ReviewController extends Controller
 {
@@ -18,9 +20,12 @@ class ReviewController extends Controller
         return new ReviewResource(Review::findOrFail($id));
     }
 
-    public function criar(ReviewRequest $request)
+    public function criar(ReviewRequest $request, ReviewService $service)
     {
-        $review = Review::create($request->validated());
+        $dados = $request->validated();
+
+        $review = $service->criar($dados);
+
         return new ReviewResource($review);
     }
 

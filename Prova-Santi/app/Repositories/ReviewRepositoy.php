@@ -11,6 +11,11 @@ class ReviewRepository
         return Review::all();
     }
 
+    public function create(array $dados)
+    {
+        return Review::create($dados);
+    }
+
     public function buscar($id)
     {
         return Review::findOrFail($id);
