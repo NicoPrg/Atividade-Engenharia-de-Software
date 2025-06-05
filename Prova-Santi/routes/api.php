@@ -14,7 +14,6 @@ Route::prefix('livros')->group(function () {
     Route::get('{id}', [LivroController::class, 'buscar']);
     Route::put('{id}', [LivroController::class, 'atualizar']);
     Route::delete('{id}', [LivroController::class, 'deletar']);
-
     Route::get('{id}/reviews', [LivroController::class, 'reviews']);
     Route::get('detalhes/todos', [LivroController::class, 'detalhes']);
 });
@@ -38,7 +37,7 @@ Route::prefix('generos')->group(function () {
     Route::put('{id}', [GeneroController::class, 'atualizar']);
     Route::delete('{id}', [GeneroController::class, 'deletar']);
     Route::get('{id}/livros', [GeneroController::class, 'livros']);
-    Route::get('com-livros/todos', [GeneroController::class, 'pertencegen']);
+    Route::get('pertencegen/todos', [GeneroController::class, 'pertencegen']);
 });
 
 Route::prefix('usuarios')->group(function () {
